@@ -1,0 +1,82 @@
+<html>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div>
+    <h2 style="color: tomato;">Admin Dashboard</h2>
+    <h3  style="color: rgb(172, 49, 131); text-align: center;font-style: italic;">Menu items</h3>
+    <table >
+
+    <!-- </table>*ngIf="showMenuItems"> -->
+        <thead  >
+          <tr>
+            <th>Item Name</th>
+            <th>Item Price</th>
+            <th>Item Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of menuItems">
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>
+               <img [src]="item.image" alt="Item Image" width="100" height="100">
+             </td>
+            <td>
+              <button type=button class="btn btn-success" (click)="editItem(item)">Update</button>
+              <button type="button" class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      
+    <!-- <button (click)="showMenuItems = true" *ngIf="!showMenuItems">Show Menu Items</button> -->
+    <button style="background-color: green; color: white;" (click)="showAddItemForm = true" *ngIf="!showAddItemForm">Create New Item</button>
+
+    <!-- Add Item Form -->
+    <!-- <div *ngIf="showMenuItems"> -->
+        <div *ngIf="showAddItemForm">
+    <h3>Add Item</h3>
+    <form (ngSubmit)="addItem()">
+      <div>
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" [(ngModel)]="newItem.name" name="itemName" required>
+      </div>
+      <div>
+        <label for="itemDescription">Item Description:</label>
+        <input type="text" id="itemDescription" [(ngModel)]="newItem.description" name="itemDescription" required>
+      </div>
+      <div>
+        <label for="itemPrice">Item Price:</label>
+        <input type="number" id="itemPrice" [(ngModel)]="newItem.price" name="itemPrice" required>
+      </div>
+      <div>
+        <label for="itemImage">Item Image URL:</label>
+        <input type="text" id="itemImage" [(ngModel)]="newItem.image" name="itemImage">
+      </div>
+      
+      <div>
+        <label for="itemQuantity">Item Quantity:</label>
+        <input type="number" id="itemQuantity" [(ngModel)]="newItem.quantity" name="itemQuantity" required>
+      </div>
+      <div>
+        <label for="itemCategory">Item Category:</label>
+        <input type="text" id="itemCategory" [(ngModel)]="newItem.category" name="itemCategory" required>
+      </div>
+      <button type="submit">Add Item</button>
+    </form>
+  </div>
+    <!-- Items List -->
+   <!-- Items List -->
+   <!-- <h3 *ngIf="showMenuItems">Menu Items</h3> -->
+  
+ </div>
+</html>
+ 
+ 
+ 
+ 
+ 
+
+  
+
